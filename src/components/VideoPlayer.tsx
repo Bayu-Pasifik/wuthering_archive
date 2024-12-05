@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useRef } from "react";
 
 type VideoPlayerProps = {
@@ -15,9 +15,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   src,
   width = "100%",
   height = "auto",
-  autoplay = true,
+  autoplay = false,
   loop = true,
-  muted = false,
+  muted = true, // Set muted ke true secara default
   className = "",
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -51,5 +51,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     </div>
   );
 };
+
 
 export default VideoPlayer;

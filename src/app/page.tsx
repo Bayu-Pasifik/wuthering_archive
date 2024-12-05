@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import VideoPlayer from "../components/VideoPlayer";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
@@ -38,8 +37,14 @@ export default function Home() {
         className="horizontal-container flex w-[300vw] h-screen overflow-hidden"
       >
         {/* Page 1: VideoPlayer */}
-        <div className="horizontal-section w-screen h-screen bg-black flex justify-center items-center">
-          <VideoPlayer src="/videos/footage.mp4" width="100%" height="auto" />
+        <div id="video" className=" video horizontal-section w-screen h-screen bg-black flex justify-center items-center">
+          <VideoPlayer
+            src="/videos/footage.mp4"
+            width="100%"
+            height="auto"
+            autoplay={true}
+            muted={true}
+          />
         </div>
 
         {/* Page 2: Teks tentang Wuthering Waves */}
