@@ -37,13 +37,15 @@ export default function Home() {
         className="horizontal-container flex w-[300vw] h-screen overflow-hidden"
       >
         {/* Page 1: VideoPlayer */}
-        <div id="video" className=" video horizontal-section w-screen h-screen bg-black flex justify-center items-center">
+        <div
+          id="video"
+          className="horizontal-section w-screen h-screen bg-black flex items-center justify-center"
+        >
           <VideoPlayer
             src="/videos/footage.mp4"
-            width="100%"
-            height="auto"
             autoplay={true}
             muted={true}
+            className="w-full h-full object-cover"
           />
         </div>
 

@@ -41,16 +41,14 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       <video
         ref={videoRef}
         src={src}
-        width={width}
-        height={height}
         autoPlay={autoplay}
         loop={loop}
         muted={muted}
-        style={{ display: "block", width: "100%", height: "auto" }}
+        className={`w-full h-full object-cover ${className}`}
+        style={{ display: "block" }}
       />
     </div>
   );
 };
-
 
 export default VideoPlayer;
