@@ -1,34 +1,33 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import VideoPlayer from "../components/VideoPlayer";
-import dynamic from "next/dynamic";
 
-// const Home = dynamic(() => import("./Home"), { ssr: false });
+
 gsap.registerPlugin(ScrollTrigger);
 
-const Home: React.FC = () => {
+export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
-
   useGSAP(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    if (typeof window !== "undefined") {
+      const container = containerRef.current;
 
-    const sections = gsap.utils.toArray<HTMLElement>(".horizontal-section");
+      const sections = gsap.utils.toArray<HTMLElement>(".horizontal-section");
 
-    // Animasi horizontal scroll
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: container,
-        pin: true,
-        scrub: 1,
-        end: () => `+=${container.offsetWidth}`, // Akhir horizontal scroll
-      },
-    });
+      // Animasi horizontal scroll
+      gsap.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: container,
+          pin: true,
+          scrub: 1,
+          end: () => `+=${container?.offsetWidth}`, // Akhir horizontal scroll
+        },
+      });
+    }
   });
 
   return (
@@ -86,6 +85,6 @@ const Home: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Home;
+// export default Home;
