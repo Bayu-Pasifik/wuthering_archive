@@ -12,6 +12,13 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        circular: ['Circular Web', 'sans-serif'],
+        general: ['General', 'sans-serif'],
+        robertMedium: ['Robert Medium', 'sans-serif'],
+        robertRegular: ['Robert Regular', 'sans-serif'],
+        zentry: ['Zentry', 'sans-serif'],
+      },
     },
   },
   plugins: [],

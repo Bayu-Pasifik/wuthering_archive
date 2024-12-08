@@ -6,6 +6,7 @@ import TextSection from "../components/TextSection";
 import VerticalScroll from "../components/VerticalScroll";
 import VideoPlayer from "@/components/VideoPlayer";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 
 // export default function Home() {
 //   return (
@@ -62,7 +63,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen w-screen overflow-x-hidden">
       <Hero/>
-      <section className="z-0 min-h-screen bg-blue-300"/>
+      <About/>
     </div>
   )
 }
