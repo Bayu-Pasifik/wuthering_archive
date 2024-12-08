@@ -60,9 +60,9 @@ import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <div>
+    <div className="z-0 min-h-screen overflow-hidden">
       <Hero/>
-      <h1>kuro games</h1>
+      <section className="z-0 min-h-screen bg-blue-300"/>
     </div>
   )
 }
