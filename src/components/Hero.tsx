@@ -82,7 +82,7 @@ const Hero = () => {
   const getVideoSrc = (index: number) => `videos/footage-${index}.mp4`;
   console.log("loadedVideos", loadedVideos);
   return (
-    <div className="relative h-dvh w-screen overflow-x-hidden overflow-hidden">
+    <div className="relative h-dvh w-screen overflow-x-hidden overflow-hidden" id="home">
       <div
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden  bg-blue-75"
