@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import AnimatedTitle from "./AnimatedTitle";
 gsap.registerPlugin(ScrollTrigger);
 export default function About() {
   useGSAP(() => {
@@ -27,9 +28,10 @@ export default function About() {
         <p className="font-general text-sm uppercase md:text[10px] text-center">
           Welcome to Wuthering Archive
         </p>
-        <div className="mt-5 text-center text-4xl uppercase leading-[0.8] md:text-[6rem]">
-          Discover the world of Solaris 3 Here!.
-        </div>
+        <AnimatedTitle
+          title="<b>Disc<b>o</b>ver the w<b>o</b>rld <b>o<b/>f S<b>o</b>laris 3 H<b>e</b>re!."
+          containerClass="mt-5 text-center !text-black" 
+        />
         <div className="about-subtext">
           <p>
             Wuthering Archive place where you can see archive of Wuthering Waves
