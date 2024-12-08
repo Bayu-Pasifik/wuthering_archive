@@ -8,6 +8,7 @@ import VideoPlayer from "@/components/VideoPlayer";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import NavBar from "@/components/Navbar";
+import Features from "@/components/Features";
 
 // export default function Home() {
 //   return (
@@ -59,13 +60,13 @@ import NavBar from "@/components/Navbar";
 //   );
 // }
 
-
 export default function Home() {
   return (
     <div className="relative min-h-screen w-screen overflow-x-hidden">
-      <NavBar/>
-      <Hero/>
-      <About/>
+      <NavBar />
+      <Hero />
+      <About />
+      <Features />
     </div>
-  )
+  );
 }
