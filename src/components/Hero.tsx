@@ -22,7 +22,7 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    if (loadedVideos === totalVideos - 1) {
+    if (loadedVideos === totalVideos) {
       setLoading(false);
     }
   }, [loadedVideos]);
@@ -80,22 +80,12 @@ const Hero = () => {
   });
 
   const getVideoSrc = (index: number) => `videos/footage-${index}.mp4`;
-
+  console.log("loadedVideos", loadedVideos);
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden overflow-hidden">
-      {/* {loading && (
-        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
-          <div className="three-body">
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-          </div>
-        </div>
-      )} */}
-
       <div
         id="video-frame"
-        className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
+        className="relative z-10 h-dvh w-screen overflow-hidden  bg-blue-75"
       >
         <div>
           <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
@@ -125,6 +115,7 @@ const Hero = () => {
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
+            onCanPlay={handleVideoLoad}
           />
           <video
             src={getVideoSrc(
@@ -134,7 +125,9 @@ const Hero = () => {
             loop
             muted
             className="absolute left-0 top-0 size-full object-cover object-center"
+            id= "video-bg"
             onLoadedData={handleVideoLoad}
+            onCanPlay={handleVideoLoad}
           />
         </div>
 
