@@ -1,11 +1,11 @@
-interface Props {
+interface BentoCardProps {
     src: string;
     title: string;
     description: string;
     link: string;
   }
   
-  const BentoCard: React.FC<Props> = ({ src, title, description, link }) => {
+  const BentoCard: React.FC<BentoCardProps> = ({ src, title, description, link }) => {
     return (
       <div className="relative size-full">
         {/* Video Background */}
@@ -25,9 +25,7 @@ interface Props {
           <div>
             <h1 className="bento-title special-font">{title}</h1>
             {description && (
-              <p className="mt-3 max-w-64 md:max-w-96 text-xs md:text-base">
-                {description}
-              </p>
+              <p className="mt-3 max-w-64 md:max-w-96 text-xs md:text-base">{description}</p>
             )}
           </div>
         </div>
