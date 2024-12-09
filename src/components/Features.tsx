@@ -1,3 +1,5 @@
+import BentoCard from "./BentoCard";
+
 const Features: React.FC = () => {
   return (
     <section className="bg-black pb-52">
@@ -14,6 +16,14 @@ const Features: React.FC = () => {
           offers a seamless blend of immersive storytelling, strategic combat,
           and deep customization.
         </p>
+        <div className="border-hsla relative mb-8 h-96 w-full overflow-x-hidden rounded-md md:h-[65vh]">
+          <BentoCard
+            title="Extraordinary Adventure"
+            src="videos/features-1.mp4"
+            description="Embark on an epic adventure in the vast and mysterious world of Wuthering Waves. Explore stunning landscapes, from futuristic cities to ancient ruins. Encounter unique characters and unravel the secrets of a world on the brink of change. With dynamic combat and deep customization, your journey is sure to be unforgettable."
+            link=""
+          />
+        </div>
       </div>
     </section>
   );
