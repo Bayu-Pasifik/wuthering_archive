@@ -2,7 +2,7 @@ import BentoCard from "./BentoCard";
 
 const Features: React.FC = () => {
   return (
-    <section className="bg-black pb-52">
+    <section id="features" className="bg-black pb-52">
       <div className="container mx-auto px-3 md:px-10">
         <div className="px-5 py-32">
           <p className="font-circular text-lg text-blue-50">
@@ -46,6 +46,23 @@ const Features: React.FC = () => {
               title="Echo"
               src="videos/features-5.mp4"
               description="Become a master of time with Wuthering Waves' deep Echo system. Collect Echo Fragments to level up your Resonance and unlock powerful new abilities. Discover hidden Echo Resonances throughout the world to gain unique buffs and customize your Echo skills to fit your playstyle."
+              link=""
+            />
+          </div>
+          <div className="bento-tilt_2 row-span-1 md:col-span-1">
+            <BentoCard
+              title="MISC"
+              src="videos/features-7.mp4"
+              description="Find various of miscellaneous throughout the game. From rare items to secrets, there's something for everyone in the game."
+              link=""
+            />
+          </div>
+
+          <div className="bento-tilt_2">
+            <BentoCard
+              title="Weapons"
+              src="videos/features-6.mp4"
+              description="Experience deep character-weapon synergy. Each character has a preferred weapon type that enhances their abilities and creates unique combos."
               link=""
             />
           </div>
