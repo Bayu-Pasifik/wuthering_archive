@@ -3,17 +3,23 @@ import AnimatedTitle from "./AnimatedTitle";
 
 const Story: React.FC = () => {
   const frameRef = useRef<HTMLImageElement | null>(null);
-  const handleMouseLeave = () => {};
-  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = () => {
     if (!frameRef.current) return;
-    const { left, top, width, height } =
-      frameRef.current.getBoundingClientRect();
+    const element = frameRef.current;
+    const newTransform = `perspective(0px) rotateX(${0}deg) rotateY(${0}deg) scale3d(.95, .95, .95)`;
+    element.style.transform = newTransform;
+  };
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    const element = frameRef.current;
+    if (!element) return;
+    const { left, top, width, height } = element.getBoundingClientRect();
     const relativeX = (event.clientX - left) / width;
     const relativeY = (event.clientY - top) / height;
-    const tiltX = (relativeY - 0.5) * 5;
-    const tiltY = (relativeX - 0.5) * -5;
-    const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.95, .95, .95)`;
-    frameRef.current.style.transform = newTransform;
+    const tiltX = (relativeY - 0.5) * 25;
+    const tiltY = (relativeX - 0.5) * -25;
+    const newTransform = `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.95, .95, .95)`;
+    element.style.transform = newTransform;
+    
   };
   return (
     <section id="story" className="min-h-dvh bg-black w-screen text-blue-50">
