@@ -43,7 +43,7 @@ const HeroDetail: React.FC = () => {
   return (
     <>
       {/* Background */}
-      <div className="absolute inset-0 z-0" id="background">
+      <div className="absolute inset-0 z-0 bg-black" id="background">
         <img
           src="images/background.png"
           alt="Backdrop"
