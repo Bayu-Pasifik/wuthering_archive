@@ -14,13 +14,13 @@ interface SelectionGridProps {
 
 const SelectionGrid: React.FC<SelectionGridProps> = ({ data }) => {
   const { ref, inView } = useInView({
-    threshold: 0.1, // Elemen dianggap terlihat jika 10% masuk ke viewport
-    triggerOnce: false, // Animasi bisa diulang saat masuk viewport
+    threshold: 0.1, // Element is considered visible if 10% is in the viewport
+    triggerOnce: false, // Animation can be repeated when entering the viewport
   });
 
   return (
     <section ref={ref} className="min-h-dvh bg-black w-screen text-blue-50">
-      <div className="grid grid-cols-6 grid-rows-6 gap-6 p-12">
+      <div className="grid grid-cols-1 md:grid-cols-6 grid-rows-6 gap-6 p-12">
         {data.map((item, index) => {
           const direction = index % 2 === 0 ? -100 : 100;
           return (

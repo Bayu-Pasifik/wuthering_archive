@@ -21,11 +21,11 @@ const SelectionCard: React.FC<SelectionCardProps> = ({
         </div>
       </div>
 
-      {/* Image - Muncul di atas saat hover */}
+      {/* Image - Positioned below the title */}
       <img
         src={source}
         alt={title}
-        className="absolute top-0 left-1/2 transform -translate-x-1/2 object-cover w-64 h-64 rounded-lg transition-all duration-300 group-hover:top-[-100px] group-hover:scale-125 z-20"
+        className="absolute top-0 left-1/2 transform -translate-x-1/2 object-contain w-full h-full rounded-lg transition-all duration-300 group-hover:top-[-100px] group-hover:scale-125 z-0"
       />
     </div>
   );
