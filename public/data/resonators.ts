@@ -1,4 +1,4 @@
-export type Buku = {
+export type Resonators = {
     id:                          number;
     name:                        string;
     nickname:                    string;

@@ -44,7 +44,7 @@
             ],
             "source": "https://wutheringwaves.fandom.com/wiki/Aalto",
             "images": {
-                "fullBody": "/images/resonators/Aalto/Aalto_Full_body_illustration.jpg",
+                "fullBody": "/images/resonators/Aalto/Aalto_Full_body_illustration.png",
                 "characterSheet": "/images/resonators/Aalto/Aalto_character_sheet.png",
                 "profile": "/images/resonators/Aalto/Aalto_profile_Reveal.jpg",
                 "splash_art": ""
@@ -110,6 +110,100 @@
                     "content": "'Welcome to the Black Shores! Would you like to start by watering the flowers, or saving humanity?' The Black Shores is situated on a remote island. Aside from the regular monsoons, currents, and butterflies, the island is only ever visited by the rising and falling tides. This uncharted area is not found on any world map. This secretive organization is dedicated to the lofty goals of world salvation: the kind people would only expect to see in tales. It's no wonder that people often struggle to believe Aalto, a seemingly unserious and elusive figure, is tied to this enigmatic group. To truly understand Aalto, one needs to see through his enigmatic exterior to uncover the kind and steadfast heart beating within. He was well aware that his mist alone could never hide the permanent wounds inflicted by the Lament on this planet. This is why he readily agreed to a long-term cooperation with the Black Shores upon first setting foot on the island through an invitation. So far, he has provided the Black Shores with a wealth of intelligence and helped them recruit trustworthy candidates to bolster their Think Tank. He will aid the Black Shores in putting together their plans... Until that person returns."
                 }
             ]
+        },
+        {
+            "id": 2,
+            "name": "Baizhi",
+            "nickname": "",
+            "attributes": "Glacio",
+            "weapon": "Rectifier",
+            "rarity": "4-star",
+            "class": "Mutant",
+            "combat_Role": ["Support", "Healer"],
+            "gender": "Female",
+            "birthdate": "September 10th",
+            "birthPlace": "Huanglong",
+            "affiliation": "Huaxu Academy",
+            "quotes": "No, I cannot place my faith in it, but my anticipation stems precisely from this distrust. A claim is always verifiable before it is discredited entirely.",
+            "about": "Baizhi is a researcher in Remnant Ecoacoustics at Huaxu Academy. Her once unfulfilled wish has now manifested as her loyal companion, the Remnant Creature You'tan, which is her source of healing powers. She is dedicated to studying Remnant Energy and will stop at nothing until its mysteries are unraveled.",
+            "introduction": "Baizhi, a researcher at Huaxu Academy, is known for her sharp intellect and precise methods. Despite appearing aloof, she is approachable to those who seek knowledge. Her insatiable thirst for understanding drives her to tirelessly study Remnant Energy.",
+            "release_Date": "May 23, 2024",
+            "voice_Actors": [
+                {
+                    "language": "English",
+                    "name": "Samantha Dakin"
+                }
+            ],
+            "source": "Wuthering Waves Wiki",
+            "images": {
+                "fullBody": "/images/resonators/Baizhi/Baizhi_Full_Sprite.png",
+                "characterSheet": "/images/resonators/Baizhi/Baizhi_Character_Sheet.jpg",
+                "profile": "/images/resonator/Baizhi/Baizhi_profile_Header.png",
+                "splash_art": ""
+            },
+            "developer_Notes": {
+                "notes_1": {
+                    "title": "Complex Simplicity",
+                    "content": "Baizhi's research is driven by a desire to understand the underlying principles of Remnant Energy."
+                },
+                "notes_2": {
+                    "title": "Silent Tundra",
+                    "content": "Baizhi's methods are precise and calculated, reflecting her analytical nature."
+                },
+                "notes_3": {
+                    "title": "Veritas Lux Mea",
+                    "content": "Her quest for knowledge is unending, fueled by her intellectual curiosity."
+                },
+                "notes_4": {
+                    "title": "Eternal Verity",
+                    "content": "Baizhi's dedication to her research often leads her to uncover hidden truths."
+                },
+                "notes_5": {
+                    "title": "A Wish Answered",
+                    "content": "Her bond with You'tan is a manifestation of her unfulfilled wish."
+                },
+                "notes_6": {
+                    "title": "Seeker's Devotion",
+                    "content": "Baizhi's devotion to her studies is unwavering, as she strives to unlock the secrets of Remnant Energy."
+                }
+            },
+            "resonance_Evaluation_Report": {
+                "title": "Resonance Evaluation Report",
+                "content": "Baizhi experienced her Awakening four years ago after being exposed to a strong Remnant Energy source. Her Resonance Spectrum Pattern shows a strong Syntony Response with You'tan, and she is classified as a Mutant Resonator with a Dormant Period. Her frequency displays high stability with no risk of Overclocking."
+            },
+            "overclock_Diagnosis": {
+                "title": "Overclock Diagnosis",
+                "content": "Baizhi's waveform graph illustrates an elliptical fluctuation with a stable Time Domain. No abnormal parameters are observed, indicating no risk of Overclocking."
+            },
+            "character_stories": [
+                {
+                    "unlock": "Unlock at Level 1",
+                    "title": "Story 1",
+                    "content": "Baizhi's journey began at Huaxu Academy, where she quickly rose through the ranks due to her sharp intellect and dedication."
+                },
+                {
+                    "unlock": "Unlock at Level 2",
+                    "title": "Story 2",
+                    "content": "Her research in Remnant Ecoacoustics led to the discovery of You'tan, her loyal companion and source of healing powers."
+                },
+                {
+                    "unlock": "Unlock at Level 3",
+                    "title": "Story 3",
+                    "content": "Despite her aloof appearance, Baizhi is approachable to those seeking knowledge, and she often helps others in their studies."
+                },
+                {
+                    "unlock": "Unlock at Level 4",
+                    "title": "Story 4",
+                    "content": "Baizhi's Awakening after exposure to strong Remnant Energy granted her unique healing abilities, making her a valuable asset to her team."
+                },
+                {
+                    "unlock": "Unlock at Level 5",
+                    "title": "Story 5",
+                    "content": "Her unfulfilled wish manifested as You'tan, and she continues to study Remnant Energy to unlock its secrets."
+                }
+            ]
         }
+        
+        
     ]
 }
