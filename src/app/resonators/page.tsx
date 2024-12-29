@@ -1,12 +1,19 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import HeroDetail from "@/components/HeroDetail";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useResonators } from "../hooks/useResonators";
 import { LayoutTemplate } from "@/components/LayoutTemplate";
 import SelectionCard from "@/components/SelectionCard";
+import FilterComponent from "@/components/Filter";
+
+const filters = [
+  
+  
+  
+];
 
 const ResonatorPage: React.FC = () => {
   const { ref, inView } = useInView({
@@ -15,6 +22,7 @@ const ResonatorPage: React.FC = () => {
   });
 
   const { data: resonatorData, isLoading, isError, error } = useResonators();
+  const [selectedFilter, setSelectedFilter] = useState<string>("all");
 
   useEffect(() => {
     // Tambahkan class ke body
@@ -29,15 +37,34 @@ const ResonatorPage: React.FC = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error?.message}</div>;
 
+  const filteredData =
+  selectedFilter === "all"
+    ? resonatorData
+    : resonatorData?.filter((resonator) => {
+        // Filter for rarity
+        if (selectedFilter === "4-star") return resonator.rarity.title === "4 Stars";
+        if (selectedFilter === "5-star") return resonator.rarity.title === "5 Stars";
+        
+        // Filter for weapons - perhatikan huruf kapital sesuai dengan id di filterGroups
+        if (["Sword", "Pistols", "Rectifier", "Broadblade", "Gauntlets"].includes(selectedFilter)) {
+          return resonator.weapon === selectedFilter;
+        }
+        
+        // Filter for elements/attributes
+        return resonator.attribute === selectedFilter;
+      });
+
   return (
     <div className="h-screen relative w-screen min-h-screen">
       <HeroDetail />
-      <section
-        ref={ref}
-        className="p-10 min-h-dvh w-screen text-blue-50"
-      >
+      <FilterComponent
+        // filters={filters}
+        // selectedFilter={selectedFilter}
+        onFilterChange={setSelectedFilter}
+      />
+      <section ref={ref} className="p-10 min-h-dvh w-screen text-blue-50">
         <LayoutTemplate layout="card">
-          {resonatorData?.map((resonator, index) => {
+          {filteredData?.map((resonator, index) => {
             const direction = index % 2 === 0 ? -100 : 100;
             return (
               <motion.div
