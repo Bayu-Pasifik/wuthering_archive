@@ -7,8 +7,9 @@ import { Resonator } from '../types/resonatorType';
 async function fetchResonators(): Promise<Resonator[]> {
   try {
     const response = await axios.get(`/resonators/list`);
-    console.log(response.data);
-    return response.data; // Pastikan response.data sesuai dengan tipe Genres[]
+    console.log("response", response.data.resonatorData.resonators);
+    return response.data.resonatorData.resonators;
+
   } catch (error) {
     console.error('Error fetching all resonators:', error);
     throw error;

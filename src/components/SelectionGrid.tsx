@@ -4,12 +4,7 @@ import { useInView } from "react-intersection-observer";
 import SelectionCard from "@/components/SelectionCard";
 
 interface SelectionGridProps {
-  data: {
-    source: string;
-    title: string;
-    description: string;
-    link: string;
-  }[];
+  data: { source: string; title: string; description: string,attribute?: string }[]; // Update data type
 }
 
 const SelectionGrid: React.FC<SelectionGridProps> = ({ data }) => {
@@ -21,8 +16,10 @@ const SelectionGrid: React.FC<SelectionGridProps> = ({ data }) => {
   return (
     <section ref={ref} className="min-h-dvh bg-black w-screen text-blue-50">
       <div className="grid grid-cols-1 md:grid-cols-6 grid-rows-6 gap-6 p-12">
+        {/* Iterate over each item in the data array */}
         {data.map((item, index) => {
-          const direction = index % 2 === 0 ? -100 : 100;
+          const direction = index % 2 === 0 ? -100 : 100; // Declaration of direction inside map
+
           return (
             <motion.div
               key={index}
@@ -39,7 +36,7 @@ const SelectionGrid: React.FC<SelectionGridProps> = ({ data }) => {
                 source={item.source}
                 title={item.title}
                 description={item.description}
-                link={item.link}
+                attribute={item.attribute}
               />
             </motion.div>
           );
