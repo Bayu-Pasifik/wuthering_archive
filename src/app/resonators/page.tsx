@@ -9,12 +9,6 @@ import { LayoutTemplate } from "@/components/LayoutTemplate";
 import SelectionCard from "@/components/SelectionCard";
 import FilterComponent from "@/components/Filter";
 
-const filters = [
-  
-  
-  
-];
-
 const ResonatorPage: React.FC = () => {
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -23,12 +17,10 @@ const ResonatorPage: React.FC = () => {
 
   const { data: resonatorData, isLoading, isError, error } = useResonators();
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    // Tambahkan class ke body
     document.body.classList.add("bg-black");
-
-    // Bersihkan class saat keluar dari halaman
     return () => {
       document.body.classList.remove("bg-black");
     };
@@ -37,30 +29,36 @@ const ResonatorPage: React.FC = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error?.message}</div>;
 
-  const filteredData =
-  selectedFilter === "all"
-    ? resonatorData
-    : resonatorData?.filter((resonator) => {
-        // Filter for rarity
-        if (selectedFilter === "4-star") return resonator.rarity.title === "4 Stars";
-        if (selectedFilter === "5-star") return resonator.rarity.title === "5 Stars";
-        
-        // Filter for weapons - perhatikan huruf kapital sesuai dengan id di filterGroups
-        if (["Sword", "Pistols", "Rectifier", "Broadblade", "Gauntlets"].includes(selectedFilter)) {
-          return resonator.weapon === selectedFilter;
-        }
-        
-        // Filter for elements/attributes
-        return resonator.attribute === selectedFilter;
-      });
+  const filteredData = resonatorData?.filter((resonator) => {
+    // First apply search filter
+    const matchesSearch = searchTerm === "" || 
+      resonator.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      resonator.birthPlace?.toLowerCase().includes(searchTerm.toLowerCase());
+
+    if (!matchesSearch) return false;
+
+    // Then apply category filter
+    if (selectedFilter === "all") return true;
+    
+    // Filter for rarity
+    if (selectedFilter === "4-star") return resonator.rarity.title === "4 Stars";
+    if (selectedFilter === "5-star") return resonator.rarity.title === "5 Stars";
+    
+    // Filter for weapons
+    if (["Sword", "Pistols", "Rectifier", "Broadblade", "Gauntlets"].includes(selectedFilter)) {
+      return resonator.weapon === selectedFilter;
+    }
+    
+    // Filter for elements/attributes
+    return resonator.attribute === selectedFilter;
+  });
 
   return (
     <div className="h-screen relative w-screen min-h-screen">
       <HeroDetail />
       <FilterComponent
-        // filters={filters}
-        // selectedFilter={selectedFilter}
         onFilterChange={setSelectedFilter}
+        onSearch={setSearchTerm}
       />
       <section ref={ref} className="p-10 min-h-dvh w-screen text-blue-50">
         <LayoutTemplate layout="card">

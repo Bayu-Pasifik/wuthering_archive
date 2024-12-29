@@ -2,10 +2,22 @@ import React, { useState } from "react";
 
 interface FilterProps {
   onFilterChange: (filter: string) => void;
+  onSearch: (term: string) => void;
 }
 
-const FilterComponent: React.FC<FilterProps> = ({ onFilterChange }) => {
+const FilterComponent: React.FC<FilterProps> = ({ onFilterChange, onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    onSearch(term);
+  };
+
+  const handleClearSearch = () => {
+    setSearchTerm("");
+    onSearch("");
+  };
 
   const filterGroups = [
     {
@@ -42,7 +54,6 @@ const FilterComponent: React.FC<FilterProps> = ({ onFilterChange }) => {
     },
   ];
 
-  // Helper function to check if icon is an image path
   const isImagePath = (icon: string) => icon.includes('/');
 
   return (
@@ -55,11 +66,11 @@ const FilterComponent: React.FC<FilterProps> = ({ onFilterChange }) => {
             placeholder="Search characters..."
             className="bg-transparent text-gray-300 px-3 py-2 w-full outline-none"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={handleSearchChange}
           />
           {searchTerm && (
             <button
-              onClick={() => setSearchTerm("")}
+              onClick={handleClearSearch}
               className="px-3 text-gray-400 hover:text-gray-200"
             >
               ×
