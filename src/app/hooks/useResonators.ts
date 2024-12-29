@@ -1,19 +1,22 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { Resonators } from '../../../public/data/resonators';
+import axios from '../lib/axiosInstance';
+import { Resonator } from '../types/resonatorType';
 
-const fetchResonators = async () => {
-  const res = await fetch('/data/resonators.json'); // pastikan file ada di public/data
-  if (!res.ok) {
-    throw new Error('Data gagal dimuat');
+async function fetchResonators(): Promise<Resonator[]> {
+  try {
+    const response = await axios.get(`/resonators/list`);
+    console.log(response.data);
+    return response.data; // Pastikan response.data sesuai dengan tipe Genres[]
+  } catch (error) {
+    console.error('Error fetching all resonators:', error);
+    throw error;
   }
-  const data = await res.json();
-  return data.resonators; // pastikan data yang dikembalikan adalah array
-};
+}
 
 export const useResonators = () => {
-  return useQuery<Resonators[], Error>({
+  return useQuery<Resonator[], Error>({
     queryKey: ['resonators'],
     queryFn: fetchResonators,
     staleTime: 1000 * 60 * 60, // 1 jam

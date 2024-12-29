@@ -15,17 +15,17 @@ const ResonatorPage: React.FC = () => {
   if (isError) return <div>Error: {error?.message}</div>;
 
   // Map the data to match the required props for SelectionCard
-  const formattedData = resonatorData!.map((resonator) => ({
-    source: resonator.images.fullBody, // assuming the image URL is stored in imageUrl
-    title: resonator.name, // assuming the name is stored in name
-    description: resonator.introduction, // assuming the description is in description
-    link: `/resonators/${resonator.id}`, // assuming you use id for routing
-  }));
+  // const formattedData = resonatorData!.map((resonator) => ({
+  //   source: resonator.images.fullBody, // assuming the image URL is stored in imageUrl
+  //   title: resonator.name, // assuming the name is stored in name
+  //   description: resonator.introduction, // assuming the description is in description
+  //   link: `/resonators/${resonator.id}`, // assuming you use id for routing
+  // }));
 
   return (
     <div className="h-screen relative bg-black">
       <HeroDetail />
-      <SelectionGrid data={formattedData!} />
+      {/* <SelectionGrid data={formattedData!} /> */}
     </div>
   );
 };
