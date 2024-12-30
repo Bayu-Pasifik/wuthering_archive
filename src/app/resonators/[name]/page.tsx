@@ -9,6 +9,7 @@ import {
 import Image from "next/image";
 import { LayoutTemplate } from "@/components/LayoutTemplate";
 import BackstoryContent from "@/components/resonators/BackstoryContent";
+import CombatContent from "@/components/resonators/CombatResonator";
 
 export default function ResonatorDetail() {
   const [visibleImages, setVisibleImages] = useState(4);
@@ -311,11 +312,7 @@ export default function ResonatorDetail() {
         <BackstoryContent name={name}/>
       )}
       {activeTab === "combat" && (
-        <div className="bg-white rounded-lg p-6 shadow-lg">
-          <p className="text-gray-500">
-            Combat information will be loaded here...
-          </p>
-        </div>
+       <CombatContent name={name} />
       )}
       {activeTab === "voicelines" && (
         <div className="bg-white rounded-lg p-6 shadow-lg">

@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from '../lib/axiosInstance';
 import { DetailResonator, ResonatorGallery } from '../types/detailResonator';
 import { Backstory } from '../types/backstoryResonator';
+import { Combat } from '../types/combatResonator';
 
 async function fetchDetailResonator(name:string): Promise<DetailResonator> {
   try {
@@ -60,3 +61,22 @@ export const useBackstoryResonators = (name:string) => {
     staleTime: 1000 * 60 * 60, // 1 jam
   });
 };
+async function fetchCombatResonator(name:string): Promise<Combat> {
+  try {
+    const response = await axios.get(`/resonators/${name}/Combat`);
+    return response.data.resonatorData;
+
+  } catch (error) {
+    console.error('Error fetching all resonators:', error);
+    throw error;
+  }
+}
+
+export const useCombatResonators = (name:string) => {
+  return useQuery<Combat, Error>({
+    queryKey: ['resonators/detail/Combat', name],
+    queryFn: () => fetchCombatResonator(name),
+    staleTime: 1000 * 60 * 60, // 1 jam
+  });
+};
+
