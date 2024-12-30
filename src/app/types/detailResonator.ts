@@ -22,7 +22,7 @@ export interface VoiceActor {
     name: string;
   }
   
-  export interface Resonator {
+  export interface DetailResonator {
     name: string;
     nickname: string;
     attribute: {
