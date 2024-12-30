@@ -11,7 +11,7 @@ import FilterComponent from "@/components/Filter";
 
 const ResonatorPage: React.FC = () => {
   const { ref, inView } = useInView({
-    threshold: 0.1,
+    // threshold: 0.1,
     triggerOnce: false,
   });
 
@@ -31,7 +31,8 @@ const ResonatorPage: React.FC = () => {
 
   const filteredData = resonatorData?.filter((resonator) => {
     // First apply search filter
-    const matchesSearch = searchTerm === "" || 
+    const matchesSearch =
+      searchTerm === "" ||
       resonator.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       resonator.birthPlace?.toLowerCase().includes(searchTerm.toLowerCase());
 
@@ -39,16 +40,22 @@ const ResonatorPage: React.FC = () => {
 
     // Then apply category filter
     if (selectedFilter === "all") return true;
-    
+
     // Filter for rarity
-    if (selectedFilter === "4-star") return resonator.rarity.title === "4 Stars";
-    if (selectedFilter === "5-star") return resonator.rarity.title === "5 Stars";
-    
+    if (selectedFilter === "4-star")
+      return resonator.rarity.title === "4 Stars";
+    if (selectedFilter === "5-star")
+      return resonator.rarity.title === "5 Stars";
+
     // Filter for weapons
-    if (["Sword", "Pistols", "Rectifier", "Broadblade", "Gauntlets"].includes(selectedFilter)) {
+    if (
+      ["Sword", "Pistols", "Rectifier", "Broadblade", "Gauntlets"].includes(
+        selectedFilter
+      )
+    ) {
       return resonator.weapon === selectedFilter;
     }
-    
+
     // Filter for elements/attributes
     return resonator.attribute === selectedFilter;
   });
@@ -81,6 +88,7 @@ const ResonatorPage: React.FC = () => {
                   title={resonator.name}
                   description={resonator.birthPlace}
                   attribute={resonator.attribute}
+                  link={`/resonators/${resonator.name.replace(/\s+/g, "_").replace("The_", "")}`}
                 />
               </motion.div>
             );
