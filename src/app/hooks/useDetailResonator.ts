@@ -3,6 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from '../lib/axiosInstance';
 import { DetailResonator, ResonatorGallery } from '../types/detailResonator';
+import { Backstory } from '../types/backstoryResonator';
 
 async function fetchDetailResonator(name:string): Promise<DetailResonator> {
   try {
@@ -38,6 +39,24 @@ export const useGalleryResonators = (name:string) => {
   return useQuery<ResonatorGallery[], Error>({
     queryKey: ['resonators/detail/gallery', name],
     queryFn: () => fetchGalleryResonators(name),
+    staleTime: 1000 * 60 * 60, // 1 jam
+  });
+};
+async function fetchBackstoryResonator(name:string): Promise<Backstory> {
+  try {
+    const response = await axios.get(`/resonators/${name}/Backstory`);
+    return response.data.resonatorData;
+
+  } catch (error) {
+    console.error('Error fetching all resonators:', error);
+    throw error;
+  }
+}
+
+export const useBackstoryResonators = (name:string) => {
+  return useQuery<Backstory, Error>({
+    queryKey: ['resonators/detail/Backstory', name],
+    queryFn: () => fetchBackstoryResonator(name),
     staleTime: 1000 * 60 * 60, // 1 jam
   });
 };

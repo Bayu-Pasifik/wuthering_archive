@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { useParams } from "next/navigation";
 import {
+  useBackstoryResonators,
   useDetailResonators,
   useGalleryResonators,
 } from "@/app/hooks/useDetailResonator";
 import Image from "next/image";
 import { LayoutTemplate } from "@/components/LayoutTemplate";
+import BackstoryContent from "@/components/resonators/BackstoryContent";
 
 export default function ResonatorDetail() {
   const [visibleImages, setVisibleImages] = useState(4);
@@ -33,6 +35,8 @@ export default function ResonatorDetail() {
     isError: isErrorGallery,
     error: errorGallery,
   } = useGalleryResonators(paramName);
+
+  const { data: backstory, isLoading: isLoadingBackstory } = useBackstoryResonators(paramName);
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error?.message}</div>;
 
@@ -304,11 +308,7 @@ export default function ResonatorDetail() {
       )}
 
       {activeTab === "backstory" && (
-        <div className="bg-white rounded-lg p-6 shadow-lg">
-          <p className="text-gray-500">
-            Backstory content will be loaded here...
-          </p>
-        </div>
+        <BackstoryContent name={name}/>
       )}
       {activeTab === "combat" && (
         <div className="bg-white rounded-lg p-6 shadow-lg">
