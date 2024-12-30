@@ -2,9 +2,9 @@
 
 import { useQuery } from '@tanstack/react-query';
 import axios from '../lib/axiosInstance';
-import { DetailResonator } from '../types/detailResonator';
+import { DetailResonator, ResonatorGallery } from '../types/detailResonator';
 
-async function fetchResonators(name:string): Promise<DetailResonator> {
+async function fetchDetailResonator(name:string): Promise<DetailResonator> {
   try {
     const response = await axios.get(`/resonators/${name}`);
     console.log("response", response.data.resonatorData);
@@ -19,7 +19,25 @@ async function fetchResonators(name:string): Promise<DetailResonator> {
 export const useDetailResonators = (name:string) => {
   return useQuery<DetailResonator, Error>({
     queryKey: ['resonators/detail', name],
-    queryFn: () => fetchResonators(name),
+    queryFn: () => fetchDetailResonator(name),
+    staleTime: 1000 * 60 * 60, // 1 jam
+  });
+};
+async function fetchGalleryResonators(name:string): Promise<ResonatorGallery[]> {
+  try {
+    const response = await axios.get(`/resonators/${name}/Gallery`);
+    return response.data.resonatorData.galleries;
+
+  } catch (error) {
+    console.error('Error fetching all resonators:', error);
+    throw error;
+  }
+}
+
+export const useGalleryResonators = (name:string) => {
+  return useQuery<ResonatorGallery[], Error>({
+    queryKey: ['resonators/detail/gallery', name],
+    queryFn: () => fetchGalleryResonators(name),
     staleTime: 1000 * 60 * 60, // 1 jam
   });
 };

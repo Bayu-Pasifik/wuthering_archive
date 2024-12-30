@@ -58,3 +58,13 @@ export interface VoiceActor {
     skills: Skill[];
     officialName: OfficialName[];
   }
+
+  export type ResonatorGallery = {
+    galleryIndex: number;
+    images:       ImageGallery[];
+}
+
+export type ImageGallery = {
+    img_src: string;
+    title:   string;
+}

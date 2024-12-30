@@ -14,9 +14,17 @@ const nextConfig = {
               protocol: 'https',
               hostname: '**',
               // pathname: '**'
-          }
-      ]
-  }
+          },
+          {
+            protocol: 'https',
+            hostname: '**.wikia.nocookie.net',
+            pathname: '/wutheringwaves/images/**',
+          },
+      ],
+    },
+    experimental: {
+      timeout: 30000, // 30 detik
+    },
 };
 
 export default nextConfig;
