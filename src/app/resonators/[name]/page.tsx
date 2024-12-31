@@ -10,6 +10,7 @@ import Image from "next/image";
 import { LayoutTemplate } from "@/components/LayoutTemplate";
 import BackstoryContent from "@/components/resonators/BackstoryContent";
 import CombatContent from "@/components/resonators/CombatResonator";
+import VoiceLinesContent from "@/components/resonators/VoiceLinesContent";
 
 export default function ResonatorDetail() {
   const [visibleImages, setVisibleImages] = useState(4);
@@ -315,9 +316,7 @@ export default function ResonatorDetail() {
        <CombatContent name={name} />
       )}
       {activeTab === "voicelines" && (
-        <div className="bg-white rounded-lg p-6 shadow-lg">
-          <p className="text-gray-500">Voice lines will be loaded here...</p>
-        </div>
+        <VoiceLinesContent name={name} />
       )}
     </div>
   );

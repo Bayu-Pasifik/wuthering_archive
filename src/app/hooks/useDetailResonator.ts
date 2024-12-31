@@ -5,6 +5,7 @@ import axios from '../lib/axiosInstance';
 import { DetailResonator, ResonatorGallery } from '../types/detailResonator';
 import { Backstory } from '../types/backstoryResonator';
 import { Combat } from '../types/combatResonator';
+import { VoiceLines } from '../types/voicelinesResonator';
 
 async function fetchDetailResonator(name:string): Promise<DetailResonator> {
   try {
@@ -79,4 +80,23 @@ export const useCombatResonators = (name:string) => {
     staleTime: 1000 * 60 * 60, // 1 jam
   });
 };
+async function fetchVoiceLinesResonator(name: string): Promise<VoiceLines> {
+  try {
+    const response = await axios.get(
+      `https://wuthering-wiki-api.vercel.app/api/resonators/${name}/Voicelines`
+    );
+    return response.data.resonatorData;
+  } catch (error) {
+    console.error('Error fetching resonator voice lines:', error);
+    throw error;
+  }
+}
 
+// Updated hook with the correct URL
+export const useVoiceLinesResonators = (name: string) => {
+  return useQuery<VoiceLines, Error>({
+    queryKey: ['resonators/detail/VoiceLines', name],
+    queryFn: () => fetchVoiceLinesResonator(name),
+    staleTime: 1000 * 60 * 60, // 1 hour
+  });
+};
