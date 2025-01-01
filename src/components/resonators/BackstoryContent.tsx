@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useBackstoryResonators } from "@/app/hooks/useDetailResonator";
+import LoadingComponent from "../LoadingComponent";
 
 type ExpandedSections = {
   introduction: boolean;
@@ -10,13 +11,24 @@ type ExpandedSections = {
 };
 type SectionKey = keyof ExpandedSections;
 const BackstoryContent = ({ name }: { name: string }) => {
-  const { data: backstory } = useBackstoryResonators(name);
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>({
     introduction: false,
     personality: false,
     reports: false,
     stories: false,
   });
+  const { data: backstory, isLoading, isError } = useBackstoryResonators(name);
+
+  if (isLoading)
+    return (
+      <div className="bg-white rounded-xl shadow-lg p-6">
+        <LoadingComponent />
+      </div>
+    );
+  if (isError)
+    return (
+      <div className="bg-white rounded-xl shadow-lg p-6 text-center">Error</div>
+    );
 
   const toggleSection = (section: SectionKey) => {
     setExpandedSections((prev) => ({

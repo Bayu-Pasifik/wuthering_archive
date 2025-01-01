@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useParams } from "next/navigation";
 import {
-  useBackstoryResonators,
   useDetailResonators,
   useGalleryResonators,
 } from "@/app/hooks/useDetailResonator";
@@ -11,6 +10,7 @@ import { LayoutTemplate } from "@/components/LayoutTemplate";
 import BackstoryContent from "@/components/resonators/BackstoryContent";
 import CombatContent from "@/components/resonators/CombatResonator";
 import VoiceLinesContent from "@/components/resonators/VoiceLinesContent";
+import LoadingComponent from "@/components/LoadingComponent";
 
 export default function ResonatorDetail() {
   const [visibleImages, setVisibleImages] = useState(4);
@@ -38,9 +38,18 @@ export default function ResonatorDetail() {
     error: errorGallery,
   } = useGalleryResonators(paramName);
 
-  const { data: backstory, isLoading: isLoadingBackstory } = useBackstoryResonators(paramName);
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error: {error?.message}</div>;
+  if (isLoading || isLoadingGallery)
+    return (
+      <div className="grid place-items-center min-h-screen">
+        <LoadingComponent />
+      </div>
+    );
+  if (isError || isErrorGallery || errorGallery)
+    return (
+      <div className="text-red-600 grid place-items-center min-h-screen">
+        Error: {error?.message}
+      </div>
+    );
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -52,7 +61,7 @@ export default function ResonatorDetail() {
             <Image
               width={1000}
               height={1000}
-              src={resonator?.images[0]?.url || "/placeholder.png"}
+              src={resonator?.images[1]?.url || "/placeholder.png"}
               alt={resonator?.name || "Resonator"}
               className="w-full rounded-lg shadow-lg"
             />
@@ -309,15 +318,9 @@ export default function ResonatorDetail() {
         </LayoutTemplate>
       )}
 
-      {activeTab === "backstory" && (
-        <BackstoryContent name={name}/>
-      )}
-      {activeTab === "combat" && (
-       <CombatContent name={name} />
-      )}
-      {activeTab === "voicelines" && (
-        <VoiceLinesContent name={name} />
-      )}
+      {activeTab === "backstory" && <BackstoryContent name={name} />}
+      {activeTab === "combat" && <CombatContent name={name} />}
+      {activeTab === "voicelines" && <VoiceLinesContent name={name} />}
     </div>
   );
 }
